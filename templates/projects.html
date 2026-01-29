@@ -1,0 +1,137 @@
+{%extends 'base.html' %}
+{%load static%}
+{%block content%}
+
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <section id="finalizados" class="mt-3">
+            <h3>Catálogo</h3>
+            <div class="row d-flex justify-content-center flex-wrap">
+            {%if projects%}
+                {%for project in projects%}
+                    {%if not project.en_progreso %}
+                    <div class="row mb-5 align-items-center {% cycle '' 'flex-row-reverse' %}">
+                        <div class="col-md-4 d-flex justify-content-center">
+                            <div class="card mt-5" style="width: 20rem; height: auto">
+                                <img src="{% if project.imgPrincipal %}{{ project.imgPrincipal.url }}{% else %}https://via.placeholder.com/300{% endif %}" class="card-img-top" alt="...">                                
+                                <a href="#" class="btn btn-primary openModalButton"
+                                data-bs-toggle="modal" 
+                                data-bs-target="#myModal"     
+                                    {%for img in project.imagenes.all %}
+                                            data-img{{forloop.counter}}="{{ img.imagen.url }}"
+                                    {% endfor %}  
+                                >Ver galería</a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8 mt-5">
+                            <h4>{{project.titulo}}</h4>
+                            <p>{{project.descripcion}}<p>
+                            {%if project.link%}
+                                <a href="{{project.link}}" target="_blank" class="btn btn-secondary">Visitar proyecto</a>
+                            {%endif%}
+                        </div>
+                    </div>
+                    {%endif%}
+                {%endfor%}
+            {%endif%}
+        </div>
+        </section>
+
+        <section id="in_progress">
+            <h3>Próximamente:</h3>
+            <div class="row d-flex justify-content-center">
+                    {%for project in projects%}
+                        {%if project.en_progreso%}
+                        <div class="row mb-5 align-items-center {% cycle '' 'flex-row-reverse' %}">
+                            <div class="col-md-4 d-flex justify-content-center">
+                                <div class="card mt-5" style="width: 16rem">
+                                    <img src="{% if project.imgPrincipal %}{{ project.imgPrincipal.url }}{% else %}https://via.placeholder.com/300{% endif %}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{project.titulo}}</h5>
+                                        <p class="card-text">{{project.descripcion}}</p>
+                                        <a href="#" class="btn btn-primary openModalButton"
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#myModal"     
+                                            {%for img in project.imagenes.all %}
+                                                    data-img{{forloop.counter}}="{{ img.imagen.url }}"
+                                            {% endfor %}  
+                                        >Ver galería</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                                <div class="col-md-8 mt-5">
+                                    <h4>{{project.titulo}}</h4>
+                                    <p>{{project.descripcion}}<p>
+                                    {%if project.link%}
+                                        <a href="{{project.link}}" target="_blank" class="btn btn-secondary">Visitar proyecto</a>
+                                    {%endif%}
+                                </div>
+                        </div>
+                        {%endif%}
+                    {%endfor%}
+            </div>
+        </section>
+
+        <div class="modal" id="myModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-dialog-fullscreen">
+                <div class="modal-content" style="background-color: rgb(44, 44, 44);">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                        <div id="carouselExample" class="carousel slide carousel-fade">
+                            <div class="carousel-inner" id="carouselInner"></div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <div class="carousel-control-prev-icon" aria-hidden="true"></div>
+                            <div class="visually-hidden">Previous</div>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <div class="carousel-control-next-icon" aria-hidden="true"></div>
+                            <div class="visually-hidden">Next</div>							
+                            </button>
+                        </div>						
+                    </div>					
+                </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{%endblock%}
+
+{%block js%}
+<script>
+    document.querySelectorAll('.openModalButton').forEach(button => {
+        button.addEventListener('click',function() {
+            const carouselInner = document.getElementById('carouselInner');
+            carouselInner.innerHTML = '';
+
+            Object.keys(this.dataset).forEach(key => {
+                if (key.startsWith('img')) {
+                    const imgSrc = this.dataset[key];
+                    const carouselItem = document.createElement('div');
+                    carouselItem.classList.add('carousel-item');
+                    if (key === 'img1') {
+                        carouselItem.classList.add('active');
+                    }
+
+                    const imgElement = document.createElement('img');
+                    imgElement.src = imgSrc;
+                    imgElement.classList.add('d-block', 'w-100');
+                    imgElement.style.maxHeight = '80vh';
+                    imgElement.style.objectFit = 'contain';
+
+                    carouselItem.appendChild(imgElement);
+                    carouselInner.appendChild(carouselItem);
+                }
+            });
+        });
+    });
+</script>
+{%endblock%}
