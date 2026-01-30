@@ -13,16 +13,17 @@
                     {%if not project.en_progreso %}
                     <div class="row mb-5 align-items-center {% cycle '' 'flex-row-reverse' %}">
                         <div class="col-md-4 d-flex justify-content-center">
-                            <div class="card mt-5" style="width: 20rem; height: auto">
-                                <img src="{% if project.imgPrincipal %}{{ project.imgPrincipal.url }}{% else %}https://via.placeholder.com/300{% endif %}" class="card-img-top" alt="...">                                
-                                <a href="#" class="btn btn-primary openModalButton"
+                            <figure class="openModalButton"
                                 data-bs-toggle="modal" 
                                 data-bs-target="#myModal"     
-                                    {%for img in project.imagenes.all %}
-                                            data-img{{forloop.counter}}="{{ img.imagen.url }}"
-                                    {% endfor %}  
-                                >Ver galería</a>
-                            </div>
+                                {%for img in project.imagenes.all %}
+                                        data-img{{forloop.counter}}="{{ img.imagen.url }}"
+                                {% endfor %}>
+                                <img src="{% if project.imgPrincipal %}{{ project.imgPrincipal.url }}{% else %}https://via.placeholder.com/300{% endif %}" class="card-img-top" alt="..." style="width: 100%; height: 100%; object-fit: cover;" alt="...">
+                                <div class="capa">
+                                    <h3>VER GALERÍA</h3>
+                                </div>
+                            </figure>
                         </div>
 
                         <div class="col-md-8 mt-5">
@@ -46,29 +47,26 @@
                         {%if project.en_progreso%}
                         <div class="row mb-5 align-items-center {% cycle '' 'flex-row-reverse' %}">
                             <div class="col-md-4 d-flex justify-content-center">
-                                <div class="card mt-5" style="width: 16rem">
-                                    <img src="{% if project.imgPrincipal %}{{ project.imgPrincipal.url }}{% else %}https://via.placeholder.com/300{% endif %}" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{project.titulo}}</h5>
-                                        <p class="card-text">{{project.descripcion}}</p>
-                                        <a href="#" class="btn btn-primary openModalButton"
-                                        data-bs-toggle="modal" 
-                                        data-bs-target="#myModal"     
-                                            {%for img in project.imagenes.all %}
-                                                    data-img{{forloop.counter}}="{{ img.imagen.url }}"
-                                            {% endfor %}  
-                                        >Ver galería</a>
+                                <figure class="openModalButton"
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#myModal"     
+                                    {%for img in project.imagenes.all %}
+                                            data-img{{forloop.counter}}="{{ img.imagen.url }}"
+                                    {% endfor %}>
+                                    <img src="{% if project.imgPrincipal %}{{ project.imgPrincipal.url }}{% else %}https://via.placeholder.com/300{% endif %}" class="card-img-top" alt="..." style="width: 100%; height: 100%; object-fit: cover;" alt="...">
+                                    <div class="capa">
+                                        <h3>VER GALERÍA</h3>
                                     </div>
-                                </div>
+                                </figure>
                             </div>
 
-                                <div class="col-md-8 mt-5">
-                                    <h4>{{project.titulo}}</h4>
-                                    <p>{{project.descripcion}}<p>
-                                    {%if project.link%}
-                                        <a href="{{project.link}}" target="_blank" class="btn btn-secondary">Visitar proyecto</a>
-                                    {%endif%}
-                                </div>
+                            <div class="col-md-8 mt-5">
+                                <h4>{{project.titulo}}</h4>
+                                <p>{{project.descripcion}}<p>
+                                {%if project.link%}
+                                    <a href="{{project.link}}" target="_blank" class="btn btn-secondary">Visitar proyecto</a>
+                                {%endif%}
+                            </div>
                         </div>
                         {%endif%}
                     {%endfor%}
@@ -96,42 +94,9 @@
                         </div>						
                     </div>					
                 </div>
-                </div>
             </div>
         </div>
-
     </div>
 </div>
 
-{%endblock%}
-
-{%block js%}
-<script>
-    document.querySelectorAll('.openModalButton').forEach(button => {
-        button.addEventListener('click',function() {
-            const carouselInner = document.getElementById('carouselInner');
-            carouselInner.innerHTML = '';
-
-            Object.keys(this.dataset).forEach(key => {
-                if (key.startsWith('img')) {
-                    const imgSrc = this.dataset[key];
-                    const carouselItem = document.createElement('div');
-                    carouselItem.classList.add('carousel-item');
-                    if (key === 'img1') {
-                        carouselItem.classList.add('active');
-                    }
-
-                    const imgElement = document.createElement('img');
-                    imgElement.src = imgSrc;
-                    imgElement.classList.add('d-block', 'w-100');
-                    imgElement.style.maxHeight = '80vh';
-                    imgElement.style.objectFit = 'contain';
-
-                    carouselItem.appendChild(imgElement);
-                    carouselInner.appendChild(carouselItem);
-                }
-            });
-        });
-    });
-</script>
 {%endblock%}
