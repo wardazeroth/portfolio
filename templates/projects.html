@@ -11,7 +11,7 @@
             {%if projects%}
                 {%for project in projects%}
                     {%if not project.en_progreso %}
-                    <div class="row mb-5 align-items-center {% cycle '' 'flex-row-reverse' %}">
+                    <div class="row mb-5 {% cycle '' 'flex-row-reverse' %}">
                         <div class="col-md-4 d-flex justify-content-center">
                             <figure class="openModalButton"
                                 data-bs-toggle="modal" 
@@ -28,9 +28,9 @@
 
                         <div class="col-md-8 mt-5">
                             <h4>{{project.titulo}}</h4>
-                            <p>{{project.descripcion}}<p>
+                            <p class="mt-4">{{project.descripcion}}<p>
                             {%if project.link%}
-                                <a href="{{project.link}}" target="_blank" class="btn btn-secondary">Visitar proyecto</a>
+                                <a href="{{project.link}}" target="_blank" class="btn btn-secondary mt-4">Visitar proyecto</a>
                             {%endif%}
                         </div>
                     </div>
@@ -45,7 +45,7 @@
             <div class="row d-flex justify-content-center">
                     {%for project in projects%}
                         {%if project.en_progreso%}
-                        <div class="row mb-5 align-items-center {% cycle '' 'flex-row-reverse' %}">
+                        <div class="row mb-5 {% cycle '' 'flex-row-reverse' %}">
                             <div class="col-md-4 d-flex justify-content-center">
                                 <figure class="openModalButton"
                                     data-bs-toggle="modal" 
@@ -62,9 +62,9 @@
 
                             <div class="col-md-8 mt-5">
                                 <h4>{{project.titulo}}</h4>
-                                <p>{{project.descripcion}}<p>
+                                <p class="mt-4">{{project.descripcion}}</p>
                                 {%if project.link%}
-                                    <a href="{{project.link}}" target="_blank" class="btn btn-secondary">Visitar proyecto</a>
+                                    <a href="{{project.link}}" target="_blank" class="btn btn-secondary mt-4">Visitar proyecto</a>
                                 {%endif%}
                             </div>
                         </div>
