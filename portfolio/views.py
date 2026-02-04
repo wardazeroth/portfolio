@@ -13,13 +13,10 @@ def index(request):
         mensaje = '¡Buenas tardes!' 
     else:
         mensaje = '¡Buenas noches!'
-    
-    return render(request, 'index.html', {'mensaje': mensaje})
-
-def proyectos(request):
+        
     projects = Proyecto.objects.all()
     
-    return render(request, 'projects.html', {"projects":projects})
+    return render(request, 'index.html', {'mensaje': mensaje, 'projects': projects})
 
 def contacto(request):
     return render(request, 'contact.html') 
