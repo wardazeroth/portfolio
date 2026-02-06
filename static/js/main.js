@@ -37,6 +37,18 @@ document.addEventListener('DOMContentLoaded', function() {
                         div.innerHTML = `<img src="${foto}" class="d-block w-100" style="max-height: 80vh; object-fit: contain;">`;
                         carouselInner.appendChild(div);
                     });
+
+                document.getElementById('modalTitulo').textContent = button.dataset.titulo || '';
+                document.getElementById('modalDescripcion').textContent = button.dataset.descripcion || '';
+                const btnRepo = document.getElementById('modalRepositorioLink');
+                btnRepo.href = button.dataset.repositorio;
+                btnRepo.style.display = button.dataset.repositorio ? 'inline-block' : 'none';
+                
+                const btnLink = document.getElementById('modalLink');
+                if (button.dataset.link) {
+                    btnLink.href = button.dataset.link;
+                }
+                btnLink.style.display = button.dataset.link ? 'inline-block' : 'none';
                     myModal.show();
                 }
             }

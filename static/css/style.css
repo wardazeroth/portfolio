@@ -729,3 +729,50 @@ main {
 .skill-card:hover i.colored {
     filter: grayscale(0%);
 }
+
+.tech-icons {
+	margin-top: 3rem;
+	display: flex;
+	gap: 25px;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+	width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+	background: #6c757d;
+	border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+	background: #495057;
+}
+
+/* Para Firefox */
+.custom-scrollbar {
+	scrollbar-width: thin;
+	scrollbar-color: #6c757d transparent;
+}
+
+.modal-dialog-fullscreen .modal-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-body.custom-scrollbar {
+    flex-grow: 1; /* El texto ocupa el resto del espacio */
+}
+.modal-title, .modal-body {
+	color: rgb(191, 243, 247);
+}
+
+.modal-top-static {
+    flex-shrink: 0;
+    background: #1a1a1a;
+}
