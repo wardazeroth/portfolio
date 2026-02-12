@@ -31,7 +31,7 @@ html {
     margin-bottom: 2rem;
 }
 
-h1, h2, h3, h5, label {
+h1, h2, h3, h4, h5, label {
     margin-bottom: 2rem;
 	font-family: monospace;
 }
@@ -373,11 +373,16 @@ body.is-preload #sidebar nav ul li {
 	.foto_personal {
 		width: 40%;
 	}
+
+	.mensaje{
+	font-size: 3rem!important;
+	margin-top: 5rem!important;
+}
 }
 
 @media screen and (max-width: 736px) {
 
-	#sidebar {
+	#sidebar, #sidebar2 {
 		display: none;
 	}
 
@@ -385,13 +390,11 @@ body.is-preload #sidebar nav ul li {
 		display: block;
 	}
 
-	#sidebar2 {
-		display: none;
-	}
-
     main.container,
     #footer {
-        margin-left: 0 !important; /* eliminar cualquier margen que quede */
+        margin-left: 0 !important;
+		padding-left: 5px !important;
+        padding-right: 5px !important;
     }
 
 	.row.d-flex.justify-content-center {
@@ -400,21 +403,82 @@ body.is-preload #sidebar nav ul li {
         justify-content: center !important;
     }
 
-    /* Ajuste de las columnas de las cards */
-    .row.d-flex.justify-content-center > .col-md-4 {
-        flex: 0 0 90% !important;   /* ancho 90% */
-        max-width: 90% !important;  /* ancho máximo 90% */
-        margin-bottom: 1rem;        /* separación vertical */
-    }
+	.col-md-4, .col-md-8, .presentacion {
+			flex: 0 0 100% !important;
+			max-width: 100% !important;
+			width: 100% !important;
+			padding: 0 !important;
+			text-align: center;
+		}
 
-    /* Opcional: centrar el texto dentro de las cards */
     .row.d-flex.justify-content-center .card {
         margin: 0 auto;
 	}
 
 	.foto_personal {
 		width: 40%;
+		margin: 1rem auto;
 	}
+
+	.mensaje{
+		font-size: 2rem!important;
+		margin-top: 5rem!important;
+		margin-bottom: 5px!important;
+	}
+
+	.presentacion {
+		margin-top: 5px !important;
+		flex: 0 0 90% !important;
+        max-width: 90% !important;
+        margin-left: auto;
+        margin-right: auto;
+	}
+
+	#myModal .modal-dialog {
+		margin: 0.5rem auto!important;
+		max-width: 90%!important;
+		width: 90%;
+		display: flex;
+		align-items: center;
+		min-height: calc(100% - 1rem)
+	}
+
+	#myModal .modal-content {
+		height: auto;
+		max-height: 95vh;
+		width: 100%;
+	}
+
+	#myModal .carousel-item img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+	#modalRepositorioLink, #modalLink {
+		width: auto;
+        flex: 1;
+        font-size: 0.75rem;
+        padding: 8px 4px;
+        margin: 0 !important;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+	}
+}
+
+#finalizados .row, #in_progress .row {
+    display: flex !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    justify-content: space-between !important;
+}
+
+/* Evita que las columnas se compriman */
+#finalizados .col-md-4, #finalizados .col-md-8 {
+    flex-shrink: 0; /* Impide que la columna se achique más de lo debido */
 }
 
 .card-body {
@@ -579,7 +643,7 @@ button {
 
 .maqu {
 	font-family: monospace;
-	font-size: 2rem;
+	font-size: 3rem;
 	white-space: nowrap;       /* evita que se corte el texto */
 	overflow: hidden;          /* oculta lo que aún no aparece */
 	border-right: 3px solid #03e9f4; /* cursor */
@@ -587,7 +651,6 @@ button {
 	animation: typing 4s steps(20, end) forwards, 
 	blink 0.7s step-end infinite;
 	margin-top:50px;
-	
 }
 
 @keyframes typing {
@@ -686,6 +749,19 @@ figure:hover .capa h3 {
 	margin-top: 5rem;
 	scroll-margin-top: 50px;
 	margin-bottom: 5rem;
+}
+
+#finalizados .row, #in_progress .row {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center;
+}
+
+.flex-md-row-reverse .col-md-8 {
+    flex-grow: 1;
 }
 
 main {

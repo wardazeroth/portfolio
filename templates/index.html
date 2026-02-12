@@ -5,28 +5,27 @@
     <div class="col-md-1"></div>
     <div class="col-md-10">
         <main>
-            <h3 class="maqu mensaje">{{mensaje}}</h2>
+            <h3 class="maqu mensaje">{{mensaje}}</h3>
                 <div class="row">
-                    <div class="col-md-8 presentacion">
-                        <h4 class="mb-5">Javier Guarda</h4>
+                    <div class="col-md-8 presentacion order-2 order-md-1">
+                        <h3 class="nombre-dev mb-5">Javier Guarda</h3>
                         <p>Desarrollador web y analista Programador/estudiante de Ing. Informática con experiencia en la creación de sitios web dinámicos y funcionales. Explora mi portafolio para ver mis proyectos recientes y habilidades técnicas.</p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 order-1 order-md-2">
                     <div class="d-flex justify-content-center mb-5">
                         <img src="{%static 'images/yop.jpg' %}" class="foto_personal" alt="foto_personal">
                         </div>
-                        <h2 id="bienvenido">Bienvenido a mi portafolio web</h2>
                     </div>
                 </div>
         </main>
 
         <section id="finalizados" class="mt-5">
             <h3>Catálogo</h3>
-            <div class="row d-flex justify-content-center flex-wrap">
+            <div class="container">
             {%if projects%}
                 {%for project in projects%}
                     {%if not project.en_progreso %}
-                    <div class="row mb-5 {% cycle '' 'flex-row-reverse' %}">
+                    <div class="row mb-5 align-items-center {% cycle '' 'flex-md-row-reverse' %}">
                         <div class="col-md-4 d-flex justify-content-center">
                             <figure class="openModalButton"
                                 data-bs-toggle="modal" 
@@ -54,24 +53,26 @@
                                     <i class="{{tech.icono_class}} colored" style="font-size: 20px;" data-name="{{tech.nombre}}"></i>
                                 {%endfor%}
                             </div>
-                            {%if project.link%}
-                                <a href="{{project.link}}" target="_blank" class="btn btn-secondary mt-4"><i class="bi bi-globe2"></i>  Visitar proyecto</a>
-                            {%endif%}
-                            <a href="{{project.repositorio}}" target="_blank" class="btn btn-secondary mt-4"><i class="devicon-github-plain"></i>  Repositorio</a>
+                            <div class="d-flex flex-row gap-2 justify-content-center justify-content-md-start">
+                                {%if project.link%}
+                                    <a href="{{project.link}}" target="_blank" class="btn btn-secondary mt-4"><i class="bi bi-globe2"></i>  Visitar proyecto</a>
+                                {%endif%}
+                                <a href="{{project.repositorio}}" target="_blank" class="btn btn-secondary mt-4"><i class="devicon-github-plain"></i>  Repositorio</a>
+                            </div>
                         </div>
-                    </div>
                     {%endif%}
                 {%endfor%}
             {%endif%}
+        </div>
         </div>
         </section>
 
         <section id="in_progress">
             <h3>Próximamente:</h3>
-            <div class="row d-flex justify-content-center">
+            <div class="container">
                     {%for project in projects%}
                         {%if project.en_progreso%}
-                        <div class="row mb-5 {% cycle '' 'flex-row-reverse' %}">
+                        <div class="row mb-5 align-items-center {% cycle '' 'flex-md-row-reverse' %}">
                             <div class="col-md-4 d-flex justify-content-center">
                                 <figure class="openModalButton"
                                     data-bs-toggle="modal" 
@@ -99,10 +100,13 @@
                                         <i class="{{tech.icono_class}} colored" style="font-size: 20px;"></i>
                                     {%endfor%}
                                 </div>
-                                {%if project.link%}
-                                    <a href="{{project.link}}" target="_blank" class="btn btn-secondary mt-4"><i class="bi bi-globe2"></i>  Visitar proyecto</a>
-                                {%endif%}
-                                <a href="{{project.repositorio}}" target="_blank" class="btn btn-secondary mt-4"><i class="devicon-github-plain"></i>  Repositorio</a>
+
+                                <div class="d-flex flex-row gap-2 justify-content-center justify-content-md-start">
+                                    {%if project.link%}
+                                        <a href="{{project.link}}" target="_blank" class="btn btn-secondary mt-4"><i class="bi bi-globe2"></i>  Visitar proyecto</a>
+                                    {%endif%}
+                                    <a href="{{project.repositorio}}" target="_blank" class="btn btn-secondary mt-4"><i class="devicon-github-plain"></i>  Repositorio</a>
+                                </div>
                             </div>
                         </div>
                         {%endif%}
