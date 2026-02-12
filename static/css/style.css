@@ -21,6 +21,10 @@ html {
 	margin-top: 2em;
 }
 
+.nombre-dev {
+	margin-top: 5rem;
+}
+
 .foto_personal:hover {
     filter: grayscale(0%);
     transform: scale(1.05);
@@ -31,7 +35,7 @@ html {
     margin-bottom: 2rem;
 }
 
-h1, h2, h3, h5, label {
+h1, h2, h3, h4, h5, label {
     margin-bottom: 2rem;
 	font-family: monospace;
 }
@@ -323,6 +327,11 @@ body.is-preload #sidebar nav ul li {
 	right: 0;
 }
 
+.presentacion .nombre-dev {
+margin-top: 6em;
+z-index: 1000;
+}
+
 @media (max-width: 1480px) {
 	#main {
 		margin-left: 180px;    /* ancho cerrado del sidebar */
@@ -344,7 +353,6 @@ body.is-preload #sidebar nav ul li {
 	.navbar {
 		display: none;
 	}
-
 }
 
 @media screen and (max-width: 980px) {
@@ -415,6 +423,32 @@ body.is-preload #sidebar nav ul li {
 	.foto_personal {
 		width: 40%;
 	}
+
+	.mensaje{
+		font-size: 2rem!important;
+		margin-top: 5rem!important;
+		margin-bottom: 5px!important;
+	}
+
+	div.presentacion .nombre-dev{
+		margin-top: 0 !important;
+	}
+
+	#myModal .modal-dialog {
+		margin: 0.5rem auto;
+		max-width: 98% !important;
+		display: flex;
+		align-items: center;
+	}
+
+	#myModal .modal-content {
+		height: auto;
+		max-height: 90vh;
+	}
+
+	#myModal .carousel-inner {
+        height: auto;
+    }
 }
 
 .card-body {
@@ -678,13 +712,9 @@ figure:hover .capa h3 {
     transform: scale(1.1);
 }
 
-.presentacion {
-	margin-top: 4em;
-}
-
 #finalizados, #in_progress, #skills {
 	margin-top: 5rem;
-	scroll-margin-top: 50px;
+	scroll-margin-top: 70px;
 	margin-bottom: 5rem;
 }
 
@@ -775,4 +805,49 @@ main {
 .modal-top-static {
     flex-shrink: 0;
     background: #1a1a1a;
+}
+
+section h3 {
+	margin-bottom: 5rem;
+}
+
+.wrapper-cards {
+    transform: skewX(-10deg);
+    margin: 10px 30px;
+
+    /* --- EFECTO VIDRIO (GLASSMORPHISM) --- */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    padding-top: 40px;
+}
+
+.wrapper-cards::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+
+    background: linear-gradient(
+        135deg, 
+        rgba(65, 172, 221, 0.281) 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        rgba(100, 100, 255, 0.1) 100% 
+    );
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    z-index: -1;
+}
+
+.card-content {
+    transform: skewX(20deg);
+    position: relative;
+    z-index: 1;
+}
+.wrapper-cards > * {
+    transform: skewX(10deg);
 }
