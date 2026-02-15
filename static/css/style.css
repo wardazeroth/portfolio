@@ -732,14 +732,13 @@ figure:hover .capa h3 {
 
 #finalizados, #in_progress {
     position: relative;
-    padding: 2rem 0;
 }
 
 #finalizados::before {
     content: '';
     position: absolute;
     left: 50%;
-    top: 10rem;
+    top: 5rem;
     bottom: 0;
     width: 2px;
     background: linear-gradient(to bottom, transparent, #03e9f4, transparent);
@@ -751,36 +750,38 @@ figure:hover .capa h3 {
     display: flex;
     align-items: center; /* Centrado vertical del contenido */
     justify-content: center;
-    min-height: 400px; /* Opcional: para asegurar un tamaño mínimo consistente */
+    min-height: 400px;
     margin-bottom: 4rem;
     position: relative;
 }
 
 /* Forzamos que cada bloque ocupe el 50% para que la división sea exacta */
 .timeline-img, .timeline-content {
-    flex: 0 0 50%;
-    max-width: 50%;
-    padding: 0 40px;
+    padding: 3rem 50px 3rem 50px;
 }
 
 /* Estilo para las fotos para que se vean como en tu referencia */
 .timeline-img figure {
     width: 100%;
-    height: auto;
-    max-width: 400px;
-	height: 300px;
+    max-width: 200px;
+	height: 250px;
     margin: 0 auto;
     border-radius: 5px;
 	transform: skewX(-10deg);
 	object-fit: cover;
 }
 
+.timeline-img figure:hover {
+	transform: skewX(-10deg) scale(1.1);
+	transition: transform 0.3s ease;
+}
+
 /* Centrado de textos */
 .timeline-content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    text-align: left;
+    justify-content: space-between;
+    text-align: left!important;
 }
 
 /* Inversión para el zigzag (Alternancia) */
@@ -789,11 +790,11 @@ figure:hover .capa h3 {
 }
 
 .timeline-item:nth-child(even) .timeline-content {
-    text-align: right;
+    text-align: right!important;
 }
 
 main {
-	margin-bottom: 10rem;
+	margin-bottom: 7rem;
 }
 
 .skill-card {
@@ -835,7 +836,6 @@ main {
 }
 
 .tech-icons {
-	margin-top: 3rem;
 	display: flex;
 	gap: 25px;
 }
@@ -920,7 +920,6 @@ section h3 {
 .card-content {
     position: relative;
     z-index: 1;
-	margin-bottom: 7rem;
 }
 
 .wrapper-cards > * {
@@ -1027,5 +1026,5 @@ section h3 {
 }
 
 #proyectos {
-	background-color: #0f0e0e
+	background-color: #0f0e0e;
 }
