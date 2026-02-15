@@ -5,11 +5,16 @@ body {
     background: linear-gradient(45deg, rgb(6, 4, 12), rgb(15, 19, 32),  rgb(0, 19, 31),  rgb(1, 6, 10));
     position: relative;
     color: antiquewhite;
-	width: 100%
+	width: 100%;
+	overflow-x: hidden;
+    overflow-y: visible;
+    height: auto;
 }
 
 html {
-    scroll-behavior: smooth;
+	overflow-x: hidden;
+    overflow-y: visible;
+    height: auto;
 }
 
 .foto_personal {
@@ -19,10 +24,6 @@ html {
 	filter: grayscale(80%);
     transition: all 0.4s ease-in-out;
 	margin-top: 2em;
-}
-
-.nombre-dev {
-	margin-top: 5rem;
 }
 
 .foto_personal:hover {
@@ -369,13 +370,13 @@ z-index: 1000;
 	}
 
 	#main {
-	margin: auto;    /* ancho cerrado del sidebar */
+	margin: auto;
 	transition: margin-left 0.3s;
 	}
 
 	main.container,
     #footer {
-        margin-left: auto /* eliminar cualquier margen que quede */
+        margin-left: auto
     }
 
 	.foto_personal {
@@ -399,7 +400,7 @@ z-index: 1000;
 
     main.container,
     #footer {
-        margin-left: 0 !important; /* eliminar cualquier margen que quede */
+        margin-left: 0 !important;
     }
 
 	.row.d-flex.justify-content-center {
@@ -431,7 +432,14 @@ z-index: 1000;
 	}
 
 	div.presentacion .nombre-dev{
+		margin-left: 1em;
+		margin-right: 1em;
 		margin-top: 0 !important;
+	}
+
+	div.presentacion .descripcion-dev {
+		margin-left: 1em;
+		margin-right: 1em;
 	}
 
 	#myModal .modal-dialog {
@@ -449,6 +457,10 @@ z-index: 1000;
 	#myModal .carousel-inner {
         height: auto;
     }
+
+	.card-content {
+		padding: 1rem;
+	}
 }
 
 .card-body {
@@ -714,7 +726,7 @@ figure:hover .capa h3 {
 
 #finalizados, #in_progress, #skills {
 	margin-top: 5rem;
-	scroll-margin-top: 70px;
+	scroll-margin-top: 50px;
 	margin-bottom: 5rem;
 }
 
@@ -820,7 +832,7 @@ section h3 {
     border-radius: 4px;
     
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    padding-top: 40px;
+    padding: 40px 40px 0 40px;
 }
 
 .wrapper-cards::before {
@@ -836,7 +848,7 @@ section h3 {
     );
 
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); 	
     
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 4px;
@@ -844,10 +856,113 @@ section h3 {
 }
 
 .card-content {
-    transform: skewX(20deg);
     position: relative;
     z-index: 1;
 }
+
 .wrapper-cards > * {
     transform: skewX(10deg);
+}
+
+@keyframes fadeInInit {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes revealDesc {
+    from { 
+        opacity: 0; 
+        transform: translateX(50px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
+}
+
+.nombre-dev {
+	animation: 
+        fadeInInit 1.5s ease-out forwards, 
+        fade-away linear both;
+	margin-top: 5rem;
+	color:  #03e9f4
+}
+
+.descripcion-dev {
+	opacity: 0;
+	animation: 
+		revealDesc 1s ease-out 0.8s forwards;
+		animation-timeline: auto;
+}	
+
+.autoShow {
+	opacity: 0;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    transform-style: preserve-3d;
+}
+
+.autoShow2 {
+    opacity: 0;
+	transform: skewX(-10deg);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    transform-style: preserve-3d;
+}
+
+.autoShow.visible {
+    opacity: 1;
+    translate: 0 0;
+}
+
+
+.carousel-container {
+	display: flex;
+	overflow-x: auto;
+	-webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent
+    );
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent
+    );
+}
+
+.carousel-container::-webkit-scrollbar {
+	display: none;
+}
+
+.grupo {
+	display: flex;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	animation: spin 10s infinite linear;
+	padding-right: 1em;
+	padding-top: 1em;
+}
+
+.carousel-container:hover .grupo {
+    animation-play-state: paused;
+}
+
+@keyframes spin {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+#proyectos {
+	background-color: #0f0e0e
 }
