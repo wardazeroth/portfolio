@@ -30,8 +30,8 @@
             <div class="col-md-6">
                 <section>
                     <section id="finalizados" class="mt-5">
-                            <div class="autoShow">
-                                <h3><i class="bi bi-code-slash" style="color: #03e9f4!important;"></i>    Catálogo de Proyectos</h3>
+                            <div class="autoShow2">
+                                <h3 class="catalogo"><i class="bi bi-code-slash" style="color: #03e9f4!important;"></i>    Catálogo de Proyectos</h3>
                             </div>
                             <div class="row d-flex justify-content-center flex-wrap">
                             {%if projects%}
@@ -41,7 +41,7 @@
                                     <div class="{% cycle 'normal-row' 'reverse-row' %}">                                        
                                         <div class="card-content">                                      
                                             <div class="row mb-5 {% cycle '' 'flex-row-reverse' %}">
-                                                    <div class="col-md-4 d-flex justify-content-center">
+                                                    <div class="timeline-img">
                                                         <figure class="openModalButton"
                                                             data-bs-toggle="modal" 
                                                             data-bs-target="#myModal"
@@ -60,7 +60,7 @@
                                                         </figure>
                                                     </div>
 
-                                                    <div class="col-md-8 mt-3">
+                                                    <div class="timeline-content">
                                                         <h4>{{project.titulo}}</h4>
                                                         <p class="mt-4">{{project.descripcion}}<p>
                                                         <div class="tech-icons">
@@ -87,7 +87,7 @@
                     </section>
 
                     <section id="in_progress">
-                        <div class="autoShow">
+                        <div class="autoShow2">
                             <h3><i class="bi bi-code-slash" style="color: #03e9f4!important;"></i>    Próximamente:</h3>
                         </div>
                         <div class="row d-flex justify-content-center">                            
@@ -315,31 +315,6 @@
 {% block js %}
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const targets = document.querySelectorAll('.autoShow')
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    anime({
-                        targets: entry.target,
-                        opacity: [0, 1],
-                        translateY: [100, 0],
-                        duration: 1000,
-                        easing: 'easeOutQuart',
-                        complete: function(anim) {
-                            entry.target.style.transform = ''; 
-                            entry.target.style.filter = 'none';
-
-                        }
-                    });
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-
-        targets.forEach(el => observer.observe(el));
-    });
-
-        document.addEventListener('DOMContentLoaded', () => {
         const targets = document.querySelectorAll('.autoShow2')
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -347,8 +322,8 @@
                     anime({
                         targets: entry.target,
                         opacity: [0, 1],
-                        translateY: [100, 0],
                         skewX: [-10, -10],
+                        translateY: [100, 0],
                         duration: 1000,
                         easing: 'easeOutQuart',
                         complete: function(anim) {
@@ -364,5 +339,29 @@
 
         targets.forEach(el => observer.observe(el));
     });
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+        const targets = document.querySelectorAll('.autoShow')
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const isEven = entry.target.matches(':nth-child(even)');
+            
+                    anime({
+                        targets: entry.target,
+                        opacity: [0, 1],
+                        translateX: isEven ? [100, 0] : [-100, 0],
+                        duration: 1200,
+                        easing: 'easeOutQuart'
+                    });
+                    observer.unobserve(entry.target);
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.2 });
+
+        targets.forEach(el => observer.observe(el));
+    });
 </script>
-{% endblock %}
+{% endblock %}ññ

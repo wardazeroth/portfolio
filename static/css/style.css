@@ -730,6 +730,68 @@ figure:hover .capa h3 {
 	margin-bottom: 5rem;
 }
 
+#finalizados, #in_progress {
+    position: relative;
+    padding: 2rem 0;
+}
+
+#finalizados::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 10rem;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, #03e9f4, transparent);
+    transform: translateX(-50%);
+}
+
+/* Ajuste de las tarjetas para el Timeline */
+.timeline-item {
+    display: flex;
+    align-items: center; /* Centrado vertical del contenido */
+    justify-content: center;
+    min-height: 400px; /* Opcional: para asegurar un tamaño mínimo consistente */
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+/* Forzamos que cada bloque ocupe el 50% para que la división sea exacta */
+.timeline-img, .timeline-content {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 0 40px;
+}
+
+/* Estilo para las fotos para que se vean como en tu referencia */
+.timeline-img figure {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+	height: 300px;
+    margin: 0 auto;
+    border-radius: 5px;
+	transform: skewX(-10deg);
+	object-fit: cover;
+}
+
+/* Centrado de textos */
+.timeline-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+/* Inversión para el zigzag (Alternancia) */
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    text-align: right;
+}
+
 main {
 	margin-bottom: 10rem;
 }
@@ -832,7 +894,7 @@ section h3 {
     border-radius: 4px;
     
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    padding: 40px 40px 0 40px;
+    padding: 40px 0 0 0;
 }
 
 .wrapper-cards::before {
@@ -858,6 +920,7 @@ section h3 {
 .card-content {
     position: relative;
     z-index: 1;
+	margin-bottom: 7rem;
 }
 
 .wrapper-cards > * {
