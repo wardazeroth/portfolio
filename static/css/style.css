@@ -333,136 +333,6 @@ margin-top: 6em;
 z-index: 1000;
 }
 
-@media (max-width: 1480px) {
-	#main {
-		margin-left: 180px;    /* ancho cerrado del sidebar */
-		transition: margin-left 0.3s;
-	}
-
-	#sidebar2 {
-		display: block;
-	}
-
-	#sidebar.active ~ #main {
-		margin-left: 100px;   /* ancho abierto del sidebar */
-	}
-
-	body, html {
-		overflow-x: hidden;
-	}
-
-	.navbar {
-		display: none;
-	}
-}
-
-@media screen and (max-width: 980px) {
-	#sidebar {
-		display: none;
-	}
-
-	.navbar {
-		display: block;
-	}
-
-	#sidebar2 {
-		display: block;
-	}
-
-	#main {
-	margin: auto;
-	transition: margin-left 0.3s;
-	}
-
-	main.container,
-    #footer {
-        margin-left: auto
-    }
-
-	.foto_personal {
-		width: 40%;
-	}
-}
-
-@media screen and (max-width: 736px) {
-
-	#sidebar {
-		display: none;
-	}
-
-	.navbar {
-		display: block;
-	}
-
-	#sidebar2 {
-		display: none;
-	}
-
-    main.container,
-    #footer {
-        margin-left: 0 !important;
-    }
-
-	.row.d-flex.justify-content-center {
-        display: flex !important;
-        flex-wrap: wrap;
-        justify-content: center !important;
-    }
-
-    /* Ajuste de las columnas de las cards */
-    .row.d-flex.justify-content-center > .col-md-4 {
-        flex: 0 0 90% !important;   /* ancho 90% */
-        max-width: 90% !important;  /* ancho máximo 90% */
-        margin-bottom: 1rem;        /* separación vertical */
-    }
-
-    /* Opcional: centrar el texto dentro de las cards */
-    .row.d-flex.justify-content-center .card {
-        margin: 0 auto;
-	}
-
-	.foto_personal {
-		width: 40%;
-	}
-
-	.mensaje{
-		font-size: 2rem!important;
-		margin-top: 5rem!important;
-		margin-bottom: 5px!important;
-	}
-
-	div.presentacion .nombre-dev{
-		margin-left: 1em;
-		margin-right: 1em;
-		margin-top: 0 !important;
-	}
-
-	div.presentacion .descripcion-dev {
-		margin-left: 1em;
-		margin-right: 1em;
-	}
-
-	#myModal .modal-dialog {
-		margin: 0.5rem auto;
-		max-width: 98% !important;
-		display: flex;
-		align-items: center;
-	}
-
-	#myModal .modal-content {
-		height: auto;
-		max-height: 90vh;
-	}
-
-	#myModal .carousel-inner {
-        height: auto;
-    }
-
-	.card-content {
-		padding: 1rem;
-	}
-}
-
 .card-body {
 	background-color: #1d1e20;
 	color: antiquewhite;
@@ -649,7 +519,7 @@ button {
 	max-width: 90%;
 	max-height: 90vh;
 	width: 700px;
-}
+}	
 
 #myModal .modal-content {
     padding: 0;
@@ -755,12 +625,10 @@ figure:hover .capa h3 {
     position: relative;
 }
 
-/* Forzamos que cada bloque ocupe el 50% para que la división sea exacta */
 .timeline-img, .timeline-content {
     padding: 3rem 50px 3rem 50px;
 }
 
-/* Estilo para las fotos para que se vean como en tu referencia */
 .timeline-img figure {
     width: 100%;
     max-width: 200px;
@@ -1027,4 +895,157 @@ section h3 {
 
 #proyectos {
 	background-color: #0f0e0e;
+}
+
+@media (max-width: 1480px) {
+	#main {
+		margin-left: 180px;    /* ancho cerrado del sidebar */
+		transition: margin-left 0.3s;
+	}
+
+	#sidebar2 {
+		display: block;
+	}
+
+	#sidebar.active ~ #main {
+		margin-left: 100px;   /* ancho abierto del sidebar */
+	}
+
+	body, html {
+		overflow-x: hidden;
+	}
+
+	.navbar {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 980px) {
+	#sidebar {
+		display: none;
+	}
+
+	.navbar {
+		display: block;
+	}
+
+	#sidebar2 {
+		display: block;
+	}
+
+	#main {
+	margin: auto;
+	transition: margin-left 0.3s;
+	}
+
+	main.container,
+    #footer {
+        margin-left: auto
+    }
+
+	.foto_personal {
+		width: 40%;
+	}
+}
+
+@media screen and (max-width: 736px) {
+
+	#sidebar {
+		display: none;
+	}
+
+	.navbar {
+		display: block;
+	}
+
+	#sidebar2 {
+		display: none;
+	}
+
+    main.container,
+    #footer {
+        margin-left: 0 !important;
+    }
+
+	.row.d-flex.justify-content-center {
+        display: flex !important;
+        flex-wrap: wrap;
+        justify-content: center !important;
+    }
+
+    /* Ajuste de las columnas de las cards */
+    .row.d-flex.justify-content-center > .col-md-4 {
+        flex: 0 0 90% !important;   /* ancho 90% */
+        max-width: 90% !important;  /* ancho máximo 90% */
+        margin-bottom: 1rem;        /* separación vertical */
+    }
+
+    /* Opcional: centrar el texto dentro de las cards */
+    .row.d-flex.justify-content-center .card {
+        margin: 0 auto;
+	}
+
+	.foto_personal {
+		width: 40%;
+	}
+
+	.mensaje{
+		font-size: 2rem!important;
+		margin-top: 5rem!important;
+		margin-bottom: 5px!important;
+	}
+
+	div.presentacion .nombre-dev{
+		margin-left: 10px;
+		margin-right: 10px;
+		margin-top: 0 !important;
+	}
+
+	div.presentacion .descripcion-dev {
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+
+	#myModal .modal-dialog {
+		margin: 0.5rem auto!important;
+		max-width: 100% !important;
+		display: flex!important;
+		align-items: center!important;
+		margin-top: 3rem!important;
+	}
+
+	#myModal .modal-content {
+		height: auto;
+		max-height: 90vh;
+	}
+
+	#myModal .carousel-inner {
+        height: auto;
+    }
+
+	.card-content {
+		padding: 1rem;
+	}
+
+	#finalizados::before {
+        display: none;
+    }
+
+	.timeline-img, .timeline-content {
+        padding: 1.5rem 10px !important;
+        width: 100% !important;
+        text-align: left !important; 
+    }
+
+    .timeline-item:nth-child(even) {
+        flex-direction: column !important;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+        text-align: left !important;
+    }
+
+	.wrapper-cards {
+        padding: 1.5rem 10px !important;
+    }
 }
