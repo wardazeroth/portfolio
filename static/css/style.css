@@ -614,23 +614,13 @@ figure:hover .capa h3 {
     transform: translateX(-50%);
 }
 
-/* Ajuste de las tarjetas para el Timeline */
-.timeline-item {
-    display: flex;
-    align-items: center; /* Centrado vertical del contenido */
-    justify-content: center;
-    min-height: 400px;
-    margin-bottom: 0;
-    position: relative;
-}
-
 .timeline-img, .timeline-content {
     padding: 3rem 50px 3rem 50px;
 }
 
 .timeline-img figure {
     width: 100%;
-    max-width: 200px;
+    max-width: 230px;
 	height: 250px;
     margin: 0 auto;
     border-radius: 5px;
