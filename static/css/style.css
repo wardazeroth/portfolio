@@ -7,7 +7,6 @@ body {
     color: antiquewhite;
 	width: 100%;
 	overflow-x: hidden;
-    overflow-y: visible;
     height: auto;
 }
 
@@ -621,7 +620,7 @@ figure:hover .capa h3 {
     align-items: center; /* Centrado vertical del contenido */
     justify-content: center;
     min-height: 400px;
-    margin-bottom: 4rem;
+    margin-bottom: 0;
     position: relative;
 }
 
@@ -644,21 +643,22 @@ figure:hover .capa h3 {
 	transition: transform 0.3s ease;
 }
 
-/* Centrado de textos */
-.timeline-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: left!important;
+.timeline-item .timeline-content {
+    text-align: left !important;
 }
 
-/* Inversión para el zigzag (Alternancia) */
-.timeline-item:nth-child(even) {
-    flex-direction: row-reverse;
-}
-
+/* Items Pares (Zigzag): Texto a la izquierda de la imagen, alineado a la derecha (hacia la línea) */
 .timeline-item:nth-child(even) .timeline-content {
-    text-align: right!important;
+    text-align: right !important;
+}
+
+/* Ajuste de paddings para que no se separen de la línea central */
+.timeline-img {
+    padding-right: 25px !important;
+}
+.timeline-item:nth-child(even) .timeline-img {
+    padding-left: 25px !important;
+    padding-right: 0 !important;
 }
 
 main {
@@ -897,6 +897,11 @@ section h3 {
 	background-color: #0f0e0e;
 }
 
+.linea {
+	display: none;
+}
+
+
 @media (max-width: 1480px) {
 	#main {
 		margin-left: 180px;    /* ancho cerrado del sidebar */
@@ -980,7 +985,6 @@ section h3 {
         margin-bottom: 1rem;        /* separación vertical */
     }
 
-    /* Opcional: centrar el texto dentro de las cards */
     .row.d-flex.justify-content-center .card {
         margin: 0 auto;
 	}
@@ -1008,10 +1012,8 @@ section h3 {
 
 	#myModal .modal-dialog {
 		margin: 0.5rem auto!important;
-		max-width: 100% !important;
-		display: flex!important;
-		align-items: center!important;
-		margin-top: 3rem!important;
+		max-width: 98% !important;
+		margin-top: 6rem;
 	}
 
 	#myModal .modal-content {
@@ -1048,4 +1050,19 @@ section h3 {
 	.wrapper-cards {
         padding: 1.5rem 10px !important;
     }
+
+	.linea {
+		display: block;
+	}
+
+	.linea2 {
+		display: none;
+	}
+
+	.timeline-img figure {
+		width: 100%;
+		max-width: 360px;
+		object-fit: cover;
+	}
 }
+

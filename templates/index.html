@@ -38,7 +38,7 @@
                     {%for project in projects%}
                         {%if not project.en_progreso %}
                         <div class="timeline-item autoShow">
-                        <div class="{% cycle 'normal-row' 'reverse-row' %}">                                        
+                            <div class="{% cycle 'normal-row' 'reverse-row' %}">                                        
                             <div class="card-content">                                      
                                 <div class="row mb-5 {% cycle '' 'flex-row-reverse' %}">
                                         <div class="col-md-6 timeline-img d-flex justify-content-center">
@@ -74,12 +74,13 @@
                                                 {%endif%}
                                                 <a href="{{project.repositorio}}" target="_blank" class="btn btn-secondary mt-3"><i class="devicon-github-plain"></i>  Repositorio</a>
                                             </div>
+                                            <hr class="linea2 mt-5" style="color: aliceblue;">
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>                                         
                         </div>
-
+                        <hr class="linea" style="color: aliceblue;">
                         {%endif%}
                     {%endfor%}
                 {%endif%}
@@ -277,37 +278,39 @@
     </div>
 </section>
 
-<div class="modal" id="myModal" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-dialog-fullscreen">
-                <div class="modal-content" style="background-color: rgb(44, 44, 44);">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalTitulo"></h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="row">
+    <div class="modal" id="myModal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-dialog-fullscreen">
+                    <div class="modal-content" style="background-color: rgb(44, 44, 44);">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalTitulo"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-top-static p-3">
+                            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                                <div id="carouselExample" class="carousel slide carousel-fade">
+                                    <div class="carousel-inner" id="carouselInner"></div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                    <div class="carousel-control-prev-icon" aria-hidden="true"></div>
+                                    <div class="visually-hidden">Previous</div>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                    <div class="carousel-control-next-icon" aria-hidden="true"></div>
+                                    <div class="visually-hidden">Next</div>							
+                                    </button>
+                                </div>						
+                            </div>					
+                        </div>
+                    <div class="modal-body custom-scrollbar" style="overflow-y: auto;">
+                        <p id="modalDescripcion" class="mt-3"></p>
+                        <div class="d-flex flex-column flex-sm-row gap-2">
+                            <a href="#" id="modalRepositorioLink" target="_blank" class="btn btn-dark">
+                            <i class="devicon-github-original"></i> GitHub
+                            </a>
+                            <a href="#" id="modalLink" target="_blank" class="btn btn-primary">Visitar Web</a>
+                        </div>
                     </div>
-                    <div class="modal-top-static p-3">
-                        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                            <div id="carouselExample" class="carousel slide carousel-fade">
-                                <div class="carousel-inner" id="carouselInner"></div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                                <div class="carousel-control-prev-icon" aria-hidden="true"></div>
-                                <div class="visually-hidden">Previous</div>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                                <div class="carousel-control-next-icon" aria-hidden="true"></div>
-                                <div class="visually-hidden">Next</div>							
-                                </button>
-                            </div>						
-                        </div>					
-                    </div>
-                <div class="modal-body custom-scrollbar" style="overflow-y: auto;">
-                    <p id="modalDescripcion" class="mt-3"></p>
-                    <div class="d-flex flex-column flex-sm-row gap-2">
-                        <a href="#" id="modalRepositorioLink" target="_blank" class="btn btn-dark">
-                        <i class="devicon-github-original"></i> GitHub
-                        </a>
-                        <a href="#" id="modalLink" target="_blank" class="btn btn-primary">Visitar Web</a>
-                    </div>
-                </div>
+            </div>
         </div>
     </div>
 </div>
