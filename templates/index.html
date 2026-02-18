@@ -1,20 +1,22 @@
 {%extends 'base.html' %}
 {%load static%}
 {%block content%}
-<section class="container">
+
+<section>
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <main id="pres">
                 <h3 class="maqu mensaje">{{mensaje}}</h3>
                     <div class="row">
-                        <div class="col-md-8 presentacion order-2 order-md-1">
+                        <div class="col-md-7 presentacion order-2 order-md-1">
                             <h4 class="nombre-dev">Javier Guarda</h4>
                             <p class="descripcion-dev">Desarrollador web y analista Programador/estudiante de Ing. Informática con experiencia en la creación de sitios web dinámicos y funcionales. Explora mi portafolio para ver mis proyectos recientes y habilidades técnicas.</p>
                         </div>
-                        <div class="col-md-4 order-1 order-md-2">
-                        <div class="d-flex justify-content-center mb-5">
-                            <img src="{%static 'images/yop.jpg' %}" class="foto_personal" alt="foto_personal">
+                        <div class="col-md-5 order-1 order-md-2">
+                            <div class="d-flex justify-content-center mb-5">
+                                <div class="animacion" id="dot-grid"></div>
+                            <!-- <img src="{%static 'images/yop.jpg' %}" class="foto_personal" alt="foto_personal"> -->
                             </div>
                         </div>
                     </div>
@@ -34,6 +36,7 @@
                 </div>
 
                 <div class="row d-flex justify-content-center flex-wrap">
+                    <div class="animacion"></div>
                 {%if projects%}
                     {%for project in projects%}
                         {%if not project.en_progreso %}
@@ -316,7 +319,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> 
 
 {%endblock%}
 
@@ -347,8 +350,6 @@
 
         targets.forEach(el => observer.observe(el));
     });
-
-
         document.addEventListener('DOMContentLoaded', () => {
         const targets = document.querySelectorAll('.autoShow')
         const observer = new IntersectionObserver((entries) => {
@@ -371,5 +372,64 @@
 
         targets.forEach(el => observer.observe(el));
     });
+
+window.onload = function() {
+
+        const grid_ancho = 30
+        const grid_alto = 25
+        
+        const container = document.getElementById('dot-grid');
+
+        let index= 0;
+
+        for (let i = 0; i < grid_ancho; i++) {
+            for (let j = 0; j < grid_alto; j++) {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'dot-wrapper';
+                wrapper.setAttribute('data-index', index);
+
+                const punto = document.createElement('div');
+                punto.className = 'punto-element';
+                punto.setAttribute('data-index', index);
+                wrapper.appendChild(punto);
+                container.appendChild(wrapper);
+
+                index++
+            }
+        }
+
+        container.addEventListener('click', (e) => {
+        const targetIndex = e.target.getAttribute('data-index');
+        if (targetIndex !== null) {
+            lanzarAnimacion((targetIndex));
+        }
+    })
+
+    function lanzarAnimacion(desdeDonde) {
+        anime({
+            targets: '.punto-element',
+            scale: [
+                {value: 1.35, easing: 'easeOutSine', duration: 250},
+                {value: 1, easing: 'easeInOutQuad', duration: 500}
+            ],
+            translateY: [
+                {value: -15, easing: 'easeOutSine', duration: 250},
+                {value: 0, easing: 'easeInOutQuad', duration: 500}
+            ],
+            opacity: [
+                {value: 1, easing: 'easeOutSine', duration: 250},
+                {value: 0.5, easing: 'easeInOutQuad', duration: 500}
+            ],
+            delay: anime.stagger(100, {
+                grid: [grid_ancho, grid_alto],
+                from: parseInt(desdeDonde),
+                loop: true
+            }),
+        });
+    };
+
+    lanzarAnimacion('last');
+};
+
 </script>
 {% endblock %}
