@@ -36,13 +36,56 @@ html {
     margin-bottom: 2rem;
 }
 
-h1, h2, h3, h4, h5, label {
+h1, h2, h3, h4, h5, p, label {
     margin-bottom: 2rem;
-	font-family: monospace;
+	font-family: "Jersey 10", sans-serif;
+	font-weight: 400;
+	font-style: normal;
 }
 
-p {
-	font-family: monospace;
+h1 {
+	font-size: 6rem;
+}
+
+.degradado {
+		background-image: linear-gradient(to right, #03e9f4, 
+        #000000d2,  #03e9f4);
+	background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    
+    font-weight: bold;
+    display: inline-block!important;
+
+	animation: gradient-move 3s linear infinite;
+}
+
+@keyframes gradient-move {
+	0% {
+		background-position: 0% center;
+	}
+
+	100% {
+		background-position: 200% center;
+	}
+}
+
+h2 {
+	font-size: 30px;
+}
+
+h3 {
+	font-size: 2.5rem;
+}
+
+h4 {
+	font-size: 30px;
+}
+
+p, label {
+	font-size: 20px;
 }
 
 .card {
@@ -94,8 +137,6 @@ h3 {
 #footer {
 	margin-left: 12em;
 }
-
-/* Sidebar */
 
 #sidebar + main.container {
 	margin-left: 12em;
@@ -362,10 +403,14 @@ body.is-preload #sidebar nav ul li {
         black 20%, 
         transparent 100%
     );
+
+	transform: translateZ(0);
+    will-change: backdrop-filter, mask-image;
 }
 
 .presentacion {
 	margin-top: 10rem;
+	padding-bottom: 36px;
 }
 
 .presentacion .nombre-dev {
@@ -633,8 +678,8 @@ figure:hover .capa h3 {
     transform: scale(1.1);
 }
 
-#finalizados, #in_progress, #skills {
-	scroll-margin-top: 50px;
+#finalizados, #in_progress {
+	scroll-margin-top: 5rem;
 	margin-top: 5rem;
 }
 
@@ -642,8 +687,16 @@ figure:hover .capa h3 {
 	margin-bottom: 5rem;
 }
 
-#finalizados, #in_progress {
+#finalizados, #in_progress, #skills {
     position: relative;
+}
+
+#skills {
+	overflow: hidden;
+	padding-top: 5rem;
+	padding-bottom: 7rem;
+	margin-bottom: 0 !important;
+	background-color: #262921;
 }
 
 #finalizados::before {
@@ -692,10 +745,6 @@ figure:hover .capa h3 {
 .timeline-item:nth-child(even) .timeline-img {
     padding-left: 25px !important;
     padding-right: 0 !important;
-}
-
-main {
-	margin-bottom: 7rem;
 }
 
 .skill-card {
@@ -1099,10 +1148,44 @@ section h3 {
 		object-fit: cover;
 	}
 
-	.animacion {
-		width: 10%!important;
-		align-items: center!important;
+	.posicion-relativa-movil {
+		position: relative;
+		display: flex !important;
+        flex-direction: column;
+        min-height: 550px; 
+        margin-top: 2rem;
 	}
+
+	.contenedor-animacion {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 1;
+		opacity: 0.6;
+	}
+
+	.presentacion {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 100%;
+		z-index: 10;
+		margin-top: 0 !important;
+		padding: 0 15px;
+		pointer-events: none;
+	}
+
+	.presentacion h1, .presentacion h2 {
+        pointer-events: auto;
+    }
+
+    .animacion {
+        margin: 0 auto;
+    }
+
+
 }
 
 .animacion {
@@ -1143,19 +1226,17 @@ section h3 {
 }
 
 .fuzzy-overlay {
-	position: fixed;
-    top: -50%;
-    left: -50%;
-    right: -50%;
-    bottom: -50%;
-	width: 200%;
-    height: 200%;
+	position: absolute;
+	top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
     background-image: url("https://www.hover.dev/black-noise.png");
     background-repeat: repeat;
-    opacity: 0.5;
+    opacity: 0.3;
     z-index: -1;
     pointer-events: none;
-	pointer-events: none;
+
 }
 
 section, #proyectos {
@@ -1164,5 +1245,5 @@ section, #proyectos {
 }
 
 #pres {
-	margin-top: 4rem;
+	margin-top: 3rem;
 }
