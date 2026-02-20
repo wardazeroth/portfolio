@@ -1,0 +1,1 @@
+web: mi_portafolio.wsgi:application
