@@ -44,12 +44,12 @@ h1, h2, h3, h4, h5, p, label {
 }
 
 h1 {
-	font-size: 6rem;
+	font-size: 5rem;
 }
 
 .degradado {
-		background-image: linear-gradient(to right, #03e9f4, 
-        #000000d2,  #03e9f4);
+	background-image: linear-gradient(to right, #03e9f4, 
+	#89b8ffd2,  #03e9f4);
 	background-size: 300% auto;
     -webkit-background-clip: text;
     background-clip: text;
@@ -59,7 +59,7 @@ h1 {
     font-weight: bold;
     display: inline-block!important;
 
-	animation: gradient-move 3s linear infinite;
+	animation: gradient-move 20s linear infinite;
 }
 
 @keyframes gradient-move {
@@ -342,7 +342,7 @@ body.is-preload #sidebar nav ul li {
 	left: 100%;
 	top: 0;
 	z-index: 4000;
-	background-color: #030b31;
+	background-color:  #1d1e20;
 }
 
 .navbar .dropdown-menu {
@@ -409,7 +409,7 @@ body.is-preload #sidebar nav ul li {
 }
 
 .presentacion {
-	margin-top: 10rem;
+	margin-top: 12rem;
 	padding-bottom: 36px;
 }
 
@@ -696,7 +696,7 @@ figure:hover .capa h3 {
 	padding-top: 5rem;
 	padding-bottom: 7rem;
 	margin-bottom: 0 !important;
-	background-color: #262921;
+	/* background-color: #262921; */
 }
 
 #finalizados::before {
@@ -1072,16 +1072,6 @@ section h3 {
         margin: 0 auto;
 	}
 
-	.foto_personal {
-		width: 40%;
-	}
-
-	.mensaje{
-		font-size: 2rem!important;
-		margin-top: 5rem!important;
-		margin-bottom: 5px!important;
-	}
-
 	div.presentacion .nombre-dev{
 		margin-left: 10px;
 		margin-right: 10px;
@@ -1185,6 +1175,14 @@ section h3 {
     .animacion {
         margin: 0 auto;
     }
+
+	.catalogo {
+		margin-bottom: 0 !important;
+	}
+
+	.en_desarrollo {
+		margin-bottom: 2rem !important;
+	}
 }
 
 .animacion {
@@ -1228,8 +1226,8 @@ section h3 {
 	position: absolute;
 	top: -10%;
     left: -10%;
-    width: 120%;
-    height: 120%;
+    width: 200%;
+    height: 200%;
     background-image: url("https://www.hover.dev/black-noise.png");
     background-repeat: repeat;
     opacity: 0.3;
@@ -1245,4 +1243,19 @@ section, #proyectos {
 
 #pres {
 	margin-top: 3rem;
+}
+
+.icons {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 !important;
+    margin: 0 !important;
+	gap: 2rem;
+}
+
+.icons li {
+    margin: 0;
+    padding: 0;
+    display: flex;
 }

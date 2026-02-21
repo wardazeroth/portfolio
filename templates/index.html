@@ -10,8 +10,10 @@
                 <main id="pres">
                         <div class="row posicion-relativa-movil">
                             <div class="col-md-7 presentacion order-2 order-md-1">
-                                <h1 class="nombre-dev degradado">Javier Guarda</h1>
-                                <h2 class="descripcion-dev">Desarrollador web y analista Programador/estudiante de Ing. Informática con experiencia en la creación de sitios web dinámicos y funcionales. Explora mi portafolio para ver mis proyectos recientes y habilidades técnicas.</h2>
+                                <div class="nombre-dev">
+                                    <h1 class="degradado">Bienvenido...</h1>
+                                </div>
+                                <h2 class="descripcion-dev">Soy Javier, Desarrollador web y analista Programador/estudiante de Ing. Informática con experiencia en la creación de sitios web dinámicos y funcionales. Explora mi portafolio para ver mis proyectos recientes y habilidades técnicas.</h2>
                             </div>
                             <div class="col-md-5 order-1 order-md-2 contenedor-animacion">
                                 <div class="d-flex justify-content-center">
@@ -37,7 +39,7 @@
                     {%if projects%}
                         {%for project in projects%}
                             {%if not project.en_progreso %}
-                            <div class=" autoShow">
+                            <div class="autoShow">
                                 <div class="{% cycle 'normal-row' 'reverse-row' %}">                                        
                                 <div class="card-content">                                 
                                     <div class="row mb-5 {% cycle '' 'flex-row-reverse' %}">    
@@ -92,7 +94,7 @@
             <div class="col-md-6">
                 <section id="in_progress">
                     <div class="autoShow2">
-                        <h3><i class="bi bi-code-slash" style="color: #03e9f4!important;"></i>    Próximamente:</h3>
+                        <h3 class="en_desarrollo"><i class="bi bi-code-slash" style="color: #03e9f4!important;"></i>    Próximamente:</h3>
                     </div>
                     <div class="row d-flex justify-content-center">                            
                             {%for project in projects%}
@@ -427,18 +429,30 @@ window.onload = function() {
         });
     };
 
-    lanzarAnimacion('center');
-};
+        lanzarAnimacion('center');
+    };
 
     anime({
     targets: '.fuzzy-overlay',
     translateX: ['-5%', '5%'],
     translateY: ['-5%', '5%'],
-    duration: 0.1,
+    duration: 0.2,
     easing: 'linear',
     direction: 'alternate',
     loop: true
-});
+    });
+
+    const navLinks = document.querySelectorAll('.nav-link, .dropdown-item');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            if (!link.classList.contains('dropdown-toggle')) {
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse) || new bootstrap.Collapse(navbarCollapse);
+                bsCollapse.hide();
+            }
+        });
+    });
 
 </script>
 {% endblock %}

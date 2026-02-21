@@ -114,4 +114,3 @@ document.querySelectorAll('.openModalButton').forEach(button => {
 }
 form.addEventListener("submit", handleSubmit)
 
-    

@@ -36,7 +36,9 @@
                         <li><a class="dropdown-item" href="#in_progress">En desarrollo...</a></li>
                     </ul>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/#skills">Habilidades</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link {% if request.path == '/contact/' %}active{% endif %}" aria-current="page" href="{%url 'contacto' %}">Contacto</a> 
                 </li>
@@ -110,21 +112,15 @@
         <div class="row justify-content-center top-part bg-dark">
             <div class="col-md-6 text-center center-content py-5">
                 <div class="d-flex-inline">
-                    <p>Creado por Javier Guarda, 2025</p>
+                    <p>Javier Guarda, Desarrollador web</p>
                 </div>
                 <div class="d-flex-inline">
-                    <a href="/contact" style="text-decoration: none">Contáctanos</a>
-                </div>
-                <ul class="icons">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <li><a target="_blank" href="https://github.com/wardazeroth" class="fa-brands fa-github"><span class="label"></span></a></li>
-                        </div>
-                        <div class="col-md-6">
-                            <li><a target="_blank" href="https://www.linkedin.com/in/javier-guarda-acosta-770327323/" class="fa-brands fa-linkedin-in"><span class="label"></span></a></li>
-                        </div>
-                    </div>
-                </ul>										
+                    <a href="{% url 'contacto' %}" style="text-decoration: none">Contáctanos</a>
+                    <ul class="icons">
+                        <li><a target="_blank" href="https://github.com/wardazeroth" class="fa-brands fa-github"><span class="label"></span></a></li>
+                        <li><a target="_blank" href="https://www.linkedin.com/in/javier-guarda-acosta-770327323/" class="fa-brands fa-linkedin-in"><span class="label"></span></a></li>
+                    </ul>	
+                </div>									
             </div>
         </div>
     </div>
