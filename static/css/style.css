@@ -1142,7 +1142,7 @@ section h3 {
 		position: relative;
 		display: flex !important;
         flex-direction: column;
-		min-height: 80svh;
+		min-height: 96svh;
         margin-top: 2rem;
 		overflow: hidden;
 	}
@@ -1163,7 +1163,7 @@ section h3 {
 		transform: none;
 		width: 100%;
 		z-index: 10;
-		margin-top: 10rem !important;
+		margin-top: 24em !important;
 		padding: 0 15px;
 		pointer-events: none;
 	}
