@@ -1183,6 +1183,11 @@ section h3 {
 	.en_desarrollo {
 		margin-bottom: 2rem !important;
 	}
+
+	#finalizados, #in_progress {
+	margin-top: 3rem !important;
+	scroll-margin-top: 3rem !important;
+	}
 }
 
 .animacion {
