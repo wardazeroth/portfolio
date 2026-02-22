@@ -4,10 +4,11 @@ from django.db import models
 class Proyecto(models.Model):
     titulo = models.CharField(max_length=100)
     descripcion = models.TextField()
+    orden = models.IntegerField(null=True, blank=True)
     en_progreso = models.BooleanField(default=True)
     link = models.URLField(blank=True, null=True)
     imgPrincipal = models.ImageField(upload_to='proyectos/', blank=True, null=True)
-    repositorio = models.URLField(blank=True, null=False)
+    repositorio = models.URLField(blank=True, null=True)
     tecnologias = models.ManyToManyField('Tecnologia', related_name='proyectos')
 
     def __str__(self):

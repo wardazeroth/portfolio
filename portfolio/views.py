@@ -14,7 +14,7 @@ def index(request):
     else:
         mensaje = '¡Buenas noches!'
         
-    projects = Proyecto.objects.all()
+    projects = Proyecto.objects.all().order_by('orden')
     
     return render(request, 'index.html', {'mensaje': mensaje, 'projects': projects})
 

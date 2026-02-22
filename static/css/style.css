@@ -678,22 +678,22 @@ figure:hover .capa h3 {
     transform: scale(1.1);
 }
 
-#finalizados, #in_progress {
-	scroll-margin-top: 5rem;
-	margin-top: 5rem;
-}
 
 #in_progress {
-	margin-bottom: 5rem;
+	margin-bottom: 3rem;
 }
 
-#finalizados, #in_progress, #skills {
+#finalizados, #in_progress {
     position: relative;
+	scroll-margin-top: 3rem;
+	margin-top: 3rem;
 }
+
 
 #skills {
+	position: relative;
 	overflow: hidden;
-	padding-top: 5rem;
+	padding-top: 3rem;
 	padding-bottom: 7rem;
 	margin-bottom: 0 !important;
 	/* background-color: #262921; */
@@ -1235,7 +1235,7 @@ section h3 {
     height: 200%;
     background-image: url("https://www.hover.dev/black-noise.png");
     background-repeat: repeat;
-    opacity: 0.3;
+    opacity: 0.5;
     z-index: -1;
     pointer-events: none;
 
