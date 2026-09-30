@@ -161,6 +161,9 @@ if AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY:
         },
         "staticfiles": {
             "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+            "OPTIONS": {
+                "querystring_auth": False,
+            },
         },
     }
 else:    
