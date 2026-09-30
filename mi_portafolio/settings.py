@@ -32,6 +32,9 @@ SECRET_KEY = environ.get('DJANGO_SECRET_KEY', 'django-insecure-kd^r+)o&j%u9l5y9i
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+CSRF_TRUSTED_ORIGINS = ['https://jguardafolium.fly.dev']
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 
 
 # Application definition
