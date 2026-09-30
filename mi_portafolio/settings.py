@@ -15,6 +15,7 @@ from dotenv import load_dotenv
 import dj_database_url
 import os
 from os import environ
+from botocore.config import Config as BotoConfig
 
 load_dotenv()
 
@@ -157,6 +158,12 @@ if AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY:
     
     AWS_S3_CUSTOM_DOMAIN = os.environ.get('AWS_S3_CUSTOM_DOMAIN')
     AWS_S3_ADDRESSING_STYLE = "path"
+
+    AWS_S3_CLIENT_CONFIG = BotoConfig(
+    signature_version="s3v4",
+    request_checksum_calculation="when_required",
+    response_checksum_validation="when_required",
+    )
     
     STORAGES = {
         "default": {
