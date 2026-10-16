@@ -15,7 +15,6 @@ from dotenv import load_dotenv
 import dj_database_url
 import os
 from os import environ
-from botocore.config import Config as BotoConfig
 
 load_dotenv()
 
@@ -35,7 +34,6 @@ DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 CSRF_TRUSTED_ORIGINS = ['https://jguardafolium.fly.dev']
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
 
 
 # Application definition
@@ -153,25 +151,15 @@ if AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY:
     }
     AWS_S3_QUERYSTRING_AUTH = False
     AWS_S3_SIGNATURE_VERSION = None
-    AWS_S3_FILE_OVERWRITE = True
+    AWS_S3_FILE_OVERWRITE = False
     AWS_DEFAULT_ACL = None
     
     AWS_S3_CUSTOM_DOMAIN = os.environ.get('AWS_S3_CUSTOM_DOMAIN')
     AWS_S3_ADDRESSING_STYLE = "path"
-
-    AWS_S3_CLIENT_CONFIG = BotoConfig(
-        signature_version="s3v4",
-        request_checksum_calculation="when_required",
-        response_checksum_validation="when_required",
-        s3={"addressing_style": "path"},
-    )
     
     STORAGES = {
         "default": {
             "BACKEND": "storages.backends.s3.S3Storage",
-            "OPTIONS": {
-                "querystring_auth": False,
-            },
         },
         "staticfiles": {
             "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
