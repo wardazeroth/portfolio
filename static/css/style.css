@@ -410,7 +410,7 @@ body.is-preload #sidebar nav ul li {
 
 .presentacion {
 	margin-top: 12rem;
-	padding-bottom: 36px;
+	padding-bottom: 3px;
 }
 
 .presentacion .nombre-dev {
@@ -913,6 +913,10 @@ section h3 {
     transform-style: preserve-3d;
 }
 
+.autoShowSide {
+    opacity: 0;
+}
+
 .autoShow2 {
     opacity: 0;
 	transform: skewX(-10deg);
@@ -1251,7 +1255,8 @@ section, #proyectos {
 }
 
 #pres {
-	margin-top: 3rem;
+	margin-top: 2.5rem;
+	margin-bottom: 2.5rem;
 }
 
 .icons {
