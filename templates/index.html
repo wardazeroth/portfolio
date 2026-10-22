@@ -374,7 +374,33 @@ window.onload = function() {
         }
     })
 
+    const origen = (desdeDonde) => desdeDonde === 'center' ? 'center' : parseInt(desdeDonde);
+
+    // Onda sutil y continua: baja desde la esquina superior, llega a la inferior y se devuelve
+    function animacionAmbiente() {
+        anime({
+            targets: '.punto-element',
+            scale: [
+                {value: 1.15, easing: 'easeInOutSine', duration: 900},
+                {value: 1, easing: 'easeInOutSine', duration: 900}
+            ],
+            translateY: [
+                {value: -6, easing: 'easeInOutSine', duration: 900},
+                {value: 0, easing: 'easeInOutSine', duration: 900}
+            ],
+            opacity: [
+                {value: 0.9, easing: 'easeInOutSine', duration: 900},
+                {value: 0.5, easing: 'easeInOutSine', duration: 900}
+            ],
+            delay: anime.stagger(60, {grid: [grid_ancho, grid_alto], from: 'first'}),
+            direction: 'alternate',
+            loop: true
+        });
+    }
+
+    // Onda al hacer click; al terminar vuelve la animación ambiente
     function lanzarAnimacion(desdeDonde) {
+        anime.remove('.punto-element');
         anime({
             targets: '.punto-element',
             scale: [
@@ -391,13 +417,13 @@ window.onload = function() {
             ],
             delay: anime.stagger(100, {
                 grid: [grid_ancho, grid_alto],
-                from: parseInt(desdeDonde),
-                loop: true
+                from: origen(desdeDonde)
             }),
+            complete: animacionAmbiente
         });
     };
 
-        lanzarAnimacion('center');
+        animacionAmbiente();
     };
 
     anime({
