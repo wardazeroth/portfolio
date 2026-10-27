@@ -376,7 +376,7 @@ window.onload = function() {
 
     const origen = (desdeDonde) => desdeDonde === 'center' ? 'center' : parseInt(desdeDonde);
 
-    // Onda sutil y continua: baja desde la esquina superior, llega a la inferior y se devuelve
+    // Ciclo en loop: gota desde el centro, luego onda que baja desde la esquina y se devuelve, y vuelta a empezar
     function animacionAmbiente() {
         anime({
             targets: '.punto-element',
@@ -394,7 +394,8 @@ window.onload = function() {
             ],
             delay: anime.stagger(60, {grid: [grid_ancho, grid_alto], from: 'first'}),
             direction: 'alternate',
-            loop: true
+            loop: 2,
+            complete: () => lanzarAnimacion('center')
         });
     }
 
@@ -423,7 +424,7 @@ window.onload = function() {
         });
     };
 
-        animacionAmbiente();
+        lanzarAnimacion('center');
     };
 
     anime({
